@@ -2,4 +2,4 @@
 
 - Supports all Apple Silicon
 - Seamlessly transition between power states without brightness change
-- Highly customizable!
+- Highly customizable; with cooldown limits, CPU usage threshold limits, and more! 
