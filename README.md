@@ -9,7 +9,7 @@
 <br>
 
 - Designed for Apple Silicon
-- Prevents Macbooks becoming too hot but still enabling full performance when cool!
-- Can toggle between Low Power Mode without brightness change.
-- Highly customizable; with cooldown limits, CPU usage threshold limits, and more! 
+- Prevents Macbooks becoming too hot while enabling full performance when cool!
+- Toggle between Low Power Mode without brightness changes.
+- Customize clockspeed limit, cooldown duration, CPU usage threshold, and more! 
 
