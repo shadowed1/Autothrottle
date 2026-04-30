@@ -1,5 +1,8 @@
 import SwiftUI
 
+// UninstallConfirmView.swift
+// Created by shadowed1
+
 struct UninstallConfirmView: View {
 
     @Binding var isUninstalling: Bool

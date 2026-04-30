@@ -1,5 +1,8 @@
 import Foundation
 
+// ConfigManager.swift
+// Created by shadowed1
+
 struct Config: Equatable {
     var threshold: Double = 0.965
     var cooldown: Int = 120

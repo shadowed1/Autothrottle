@@ -1,5 +1,8 @@
 import SwiftUI
 
+// AutothrottleApp.swift
+// Created by shadowed1
+
 @main
 struct AutothrottleApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

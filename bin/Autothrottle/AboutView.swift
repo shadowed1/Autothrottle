@@ -1,6 +1,9 @@
 import SwiftUI
 import AppKit
 
+// AboutView.swift
+// Created by shadowed1
+
 struct VersionInfo {
     let version: String
     let changelog: [String]

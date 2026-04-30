@@ -1,5 +1,7 @@
 import SwiftUI
 
+// GradientSlider.swift
+// Created by shadowed1
 
 struct GradientSlider: View {
     @Binding var value: Double

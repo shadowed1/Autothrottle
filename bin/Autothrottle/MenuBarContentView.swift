@@ -1,5 +1,8 @@
 import SwiftUI
 
+// MenuBarContentView.swift
+// Created by shadowed1
+
 struct MenuBarContentView: View {
     @StateObject private var appState = AppState.shared
     let onStart: () -> Void

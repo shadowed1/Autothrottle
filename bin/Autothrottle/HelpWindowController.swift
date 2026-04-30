@@ -1,6 +1,9 @@
 import AppKit
 import SwiftUI
 
+// HelpWindowController.swift
+// Created by shadowed1
+
 final class HelpWindowController: NSWindowController {
     static let shared = HelpWindowController()
 

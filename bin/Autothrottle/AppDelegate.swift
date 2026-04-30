@@ -1,6 +1,9 @@
 import Cocoa
 import SwiftUI
 
+// AppDelegate.swift
+// Created by shadowed1
+
 final class InstallerWindowController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {

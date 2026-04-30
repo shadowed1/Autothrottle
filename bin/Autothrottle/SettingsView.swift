@@ -1,5 +1,8 @@
 import SwiftUI
 
+// SettingsView.swift
+// Created by shadowed1
+
 struct SettingsView: View {
 
     @State private var config: Config = ConfigManager.shared.load()

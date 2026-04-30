@@ -1,6 +1,9 @@
 import Foundation
 import AppKit
 
+// UninstallerHelper.swift
+// Created by shadowed1
+
 enum UninstallError: LocalizedError {
     case scriptNotFound
     case privilegedStepFailed(String)

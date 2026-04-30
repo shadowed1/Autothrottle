@@ -1,6 +1,9 @@
 import Foundation
 import Combine
 
+// AppState.swift
+// Created by shadowed1
+
 final class AppState: ObservableObject {
     static let shared = AppState()
 
