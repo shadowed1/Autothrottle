@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/shadowed1/Autothrottle/blob/main/bin/readme_assets/AutothrottleHeader.png?raw=true" alt="logo" width="400" />
+  <img src="https://github.com/shadowed1/Autothrottle/blob/main/bin/readme_assets/AutothrottleHeader.png?raw=true" alt="logo" width="600" />
 </p>  
 
 <br><br>
