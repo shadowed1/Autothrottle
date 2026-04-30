@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/Dck6PZ3.png" alt="logo" width="400" />
+  <img src="https://github.com/shadowed1/Autothrottle/blob/main/bin/readme_assets/AutothrottleHeader.png?raw=true" alt="logo" width="400" />
 </p>  
 
 <br><br>
@@ -17,11 +17,11 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.1/Autothrottle.dmg
 <br><br>
 
 <p align="center">
-  <img src="https://imgur.com/Ev2I1iV.png" alt="logo" width="600" />
+  <img src="https://github.com/shadowed1/Autothrottle/blob/main/bin/readme_assets/AutothrottleMenuBar.png?raw=true" alt="logo" width="600" />
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/yeaSxsQ.png" alt="logo" width="600" />
+  <img src="https://github.com/shadowed1/Autothrottle/blob/main/bin/readme_assets/AutothrottleSettings.png?raw=true" alt="logo" width="600" />
 </p>  
 
 <br><br>
