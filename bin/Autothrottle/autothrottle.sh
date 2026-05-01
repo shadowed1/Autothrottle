@@ -42,7 +42,7 @@ is_brightness_frozen() {
     local now freeze_until
     now=$(date +%s)
     freeze_until=$(cat "$BRIGHT_FREEZE_UNTIL")
-    (( now - freeze_until < 2 ))
+    (( now - freeze_until < 3 ))
 }
 
 read_brightness_now() {
@@ -57,6 +57,8 @@ read_brightness_now() {
 
 start_brightness_hold() {
     local target="$1"
+    "$BRIGHTNESS" "$target"
+    # double apply trick
     "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" --hold "$target" &
     HOLD_PID=$!
@@ -197,11 +199,15 @@ while true; do
         echo
         echo "Throttling confirmed - Enabling Low Power Mode"
 
-        freeze_brightness_updates
         SAVED_BRIGHT=$(get_user_brightness)
         echo "Saving brightness: $SAVED_BRIGHT"
 
-        start_brightness_hold "$SAVED_BRIGHT"
+        "$BRIGHTNESS" "$SAVED_BRIGHT"
+        "$BRIGHTNESS" "$SAVED_BRIGHT"
+        "$BRIGHTNESS" --hold "$SAVED_BRIGHT" &
+        HOLD_PID=$!
+        freeze_brightness_updates
+        sleep 0.5
 
         sudo pmset -a lowpowermode 1
         sleep 3
@@ -217,17 +223,24 @@ while true; do
         echo
         echo "Cooldown elapsed - Disabling Low Power Mode"
 
-        freeze_brightness_updates
         SAVED_BRIGHT=$(get_user_brightness)
         echo "Restoring brightness: $SAVED_BRIGHT"
 
-        start_brightness_hold "$SAVED_BRIGHT"
+        "$BRIGHTNESS" "$SAVED_BRIGHT"
+        "$BRIGHTNESS" "$SAVED_BRIGHT"
+        "$BRIGHTNESS" --hold "$SAVED_BRIGHT" &
+        HOLD_PID=$!
+        freeze_brightness_updates
+        sleep 0.5
 
         sudo pmset -a lowpowermode 0
         sleep 3.0
 
         stop_brightness_hold "$SAVED_BRIGHT"
         rm -f "$BRIGHT_FREEZE_UNTIL"
+
+        LOW_POWER=0
+        SAVED_BRIGHT=""
 
         LOW_POWER=0
         SAVED_BRIGHT=""
