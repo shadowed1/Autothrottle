@@ -36,12 +36,12 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.1/Autothrottle.dmg
 # How does it work?
 
 - Autothrottle uses Apple's powermetric tool to monitor CPU clockspeed.
-- Heuristical algorithm used to detect when Apple micro-throttles CPU when hot. <br>
+- Heuristical algorithm used to detect when Apple micro-throttles CPU when hot.
 - Low Power Mode is toggled on when exceeding user-defined limits (in Settings), 
 - Autothrottle restores full performance when cooldown duration ends. 
-- Brightness is read by using Apple's DisplayServicesGetBrightness and preserved.
+- Brightness is read by using `DisplayServicesGetBrightness` and preserved.
 - Autothrottle locks and unlocks saved display brightness value right before and after Low Power Mode toggling.
-- Uses Apple's pmset to control Low Power Mode.
+- Uses `pmset` to control Low Power Mode.
 - Inverted CPU clockspeed algorithm used to display Apple's CPU thermal clockspeed limits.
 
 # Changelog:
