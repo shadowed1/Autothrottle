@@ -5,7 +5,8 @@
 //          brightness --hold 0.75                - hold brightness at value until killed
 //          brightness --freeze 0.75              - freeze brightness until killed
 //          brightness --freeze 0.75 3            - freeze brightness for 3 seconds
-// Created by shadowed1
+// shadowed1
+// autothrottle_brightness paired with autothrottle.sh prevents power modes altering out brightness.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -105,21 +106,9 @@ int main(int argc, char *argv[]) {
         if (target < 0.0f) target = 0.0f;
         if (target > 1.0f) target = 1.0f;
 
-        setB(display, target);
-
         while (1) {
-            float current;
-            if (getB(display, &current) == 0) {
-                if (fabsf(current - target) > 0.00005f) {
-                    setB(display, target);
-                    setB(display, target);
-                    usleep(1000);
-                } else {
-                    usleep(2000);
-                }
-            } else {
-                usleep(2000);
-            }
+            setB(display, target);
+            usleep(200);
         }
     }
 
