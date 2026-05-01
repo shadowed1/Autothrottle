@@ -31,7 +31,7 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.1/Autothrottle.dmg
 - When opening the Autothrottle app, it will appear as a CPU icon in MacOS' Menu Bar.
 - Click the CPU icon in the Menu Bar and click Autothrottle's Stopped/Running button to start/stop. 
 - Open Autothrottle's settings to customize thermal limits.
-- Inside settings, Uninstall button will remove Autothrottle. About can check for updates!
+- Inside settings, you can remove Autothrottle clicking Uninstall, and About can check for updates!
 
 # How does it work?
 
@@ -42,7 +42,6 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.1/Autothrottle.dmg
 - Brightness is read by using `DisplayServicesGetBrightness` and preserved.
 - Autothrottle locks and unlocks saved display brightness value right before and after Low Power Mode toggling.
 - Uses `pmset` to control Low Power Mode.
-- Inverted CPU clockspeed algorithm used to display Apple's CPU thermal clockspeed limits.
 
 # Changelog:
 
