@@ -31,6 +31,7 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.1/Autothrottle.dmg
 - When opening the Autothrottle app, it will appear as a CPU icon in MacOS' Menu Bar.
 - Click the CPU icon in the Menu Bar and click Autothrottle's Stopped/Running button to start/stop. 
 - Open Autothrottle's settings to customize thermal limits.
+- Inside settings, Uninstall button will remove Autothrottle. About can check for updates!
 
 # How does it work?
 
