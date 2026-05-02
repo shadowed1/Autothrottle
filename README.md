@@ -8,7 +8,7 @@
 
 - Prevents Macbooks becoming too hot while enabling full performance when cool.
 - Designed for all Macs using Apple Silicon.
-- Toggles Low Power Mode without brightness change.
+- Autothrottle toggles Low Power Mode without brightness change to maintain user-defined temp limit.
 - Customize clockspeed limit, cooldown duration, CPU usage threshold, and more.
 
 # Current Release:
