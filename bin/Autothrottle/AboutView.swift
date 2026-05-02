@@ -75,11 +75,25 @@ struct UpdateChecker {
     }
 }
 
+private final class TopAnchoredWindow: NSWindow {
+    override func setFrame(_ frameRect: NSRect, display flag: Bool) {
+        var anchored = frameRect
+        anchored.origin.y = frame.origin.y + frame.height - frameRect.height
+        super.setFrame(anchored, display: flag)
+    }
+
+    override func setFrame(_ frameRect: NSRect, display flag: Bool, animate: Bool) {
+        var anchored = frameRect
+        anchored.origin.y = frame.origin.y + frame.height - frameRect.height
+        super.setFrame(anchored, display: flag, animate: animate)
+    }
+}
+
 final class AboutWindowController: NSWindowController, NSWindowDelegate {
     static let shared = AboutWindowController()
 
     private init() {
-        let window = NSWindow(
+        let window = TopAnchoredWindow(
             contentRect: NSRect(x: 0, y: 0, width: 320, height: 400),
             styleMask: [.titled, .closable],
             backing: .buffered,
@@ -110,6 +124,7 @@ struct AboutView: View {
     @State private var isChecking = false
     @State private var supportExpanded = false
     @State private var checkTask: Task<Void, Never>? = nil
+    @State private var chevronAngle: Double = 0
 
     private var appVersion: String { UpdateChecker.localVersion }
 
@@ -150,8 +165,30 @@ struct AboutView: View {
                 .padding(.vertical, 14)
 
             Divider()
+            Button {
+                supportExpanded.toggle()
+                withAnimation(.easeInOut(duration: 0.22)) {
+                    chevronAngle = supportExpanded ? 90 : 0
+                }
+            } label: {
+                HStack {
+                    Label("Support Autothrottle", systemImage: "heart.fill")
+                        .font(.subheadline).bold()
+                        .foregroundColor(.pink)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(.secondary)
+                        .rotationEffect(.degrees(chevronAngle))
+                }
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 14)
 
-            DisclosureGroup(isExpanded: $supportExpanded) {
+            if supportExpanded {
                 VStack(spacing: 8) {
                     supportButton(
                         label: "Sponsor on Github",
@@ -165,14 +202,9 @@ struct AboutView: View {
                     )
                 }
                 .padding(.top, 8)
+                .padding(.bottom, 14)
                 .frame(width: 276)
-            } label: {
-                Label("Support Autothrottle", systemImage: "heart.fill")
-                    .font(.subheadline).bold()
-                    .foregroundColor(.pink)
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 14)
 
             Divider()
 
