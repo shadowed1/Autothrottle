@@ -1,6 +1,6 @@
 import SwiftUI
 
-// GradientSlider.swift
+// GradientSlider
 // Created by shadowed1
 
 struct GradientSlider: View {
@@ -29,17 +29,15 @@ struct GradientSlider: View {
             let thumbDiameter: CGFloat = 20
             let trackHeight: CGFloat = 5
             let usable = geo.size.width - thumbDiameter
-            let filledWidth = max(CGFloat(fraction) * usable, 0)
+            let filledWidth = thumbDiameter / 2 + CGFloat(fraction) * usable
 
             ZStack(alignment: .leading) {
                 Capsule()
                     .fill(Color.secondary.opacity(0.25))
                     .frame(height: trackHeight)
-                    .padding(.horizontal, thumbDiameter / 2)
 
                 LinearGradient(colors: gradientColors, startPoint: .leading, endPoint: .trailing)
                     .frame(height: trackHeight)
-                    .padding(.horizontal, thumbDiameter / 2)
                     .mask(alignment: .leading) {
                         Rectangle().frame(width: filledWidth)
                     }
