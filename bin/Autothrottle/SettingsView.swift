@@ -13,6 +13,8 @@ struct SettingsView: View {
     @State private var isUninstalling = false
     @State private var uninstallError: String? = nil
     @State private var showUninstallError = false
+    @State private var advancedExpanded = false
+    @State private var advancedChevronAngle: Double = 0
     @StateObject private var appState = AppState.shared
 
 
@@ -37,7 +39,7 @@ struct SettingsView: View {
                 .padding(.vertical, 2)
             }
             
-            GroupBox(label: Text("Main").font(.headline)) {
+            GroupBox(label: Text("").font(.headline)) {
                 VStack(spacing: 16) {
 
                     VStack(alignment: .leading, spacing: 4) {
@@ -94,44 +96,67 @@ struct SettingsView: View {
                 .padding(.top, 8)
             }
 
-            GroupBox(label: Text("Advanced").font(.headline)) {
-                VStack(spacing: 16) {
-                    row(
-                        label: "Ignore CPU Usage Below",
-                        description: "Skip throttle detection if CPU usage is below this value.",
-                        value: Binding(
-                            get: { Double(100 - config.idleThreshold) },
-                            set: { config.idleThreshold = 100 - Int($0) }
-                        ),
-                        range: 5...20,
-                        step: 5,
-                        format: { "\(Int($0))%" }
-                    )
-                    row(
-                        label: "Detect CPU Usage Above",
-                        description: "Detect throttling when CPU usage is above value.",
-                        value: Binding(
-                            get: { Double(100 - config.loadThreshold) },
-                            set: { config.loadThreshold = 100 - Int($0) }
-                        ),
-                        range: 30...80,
-                        step: 5,
-                        format: { "\(Int($0))%" }
-                    )
+            GroupBox {
+                VStack(spacing: 0) {
+                    Button {
+                        advancedExpanded.toggle()
+                        withAnimation(.easeInOut(duration: 0.22)) {
+                            advancedChevronAngle = advancedExpanded ? 90 : 0
+                        }
+                    } label: {
+                        HStack {
+                            Text("Advanced")
+                                .font(.footnote)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundColor(.secondary)
+                                .rotationEffect(.degrees(advancedChevronAngle))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
 
-                    row(
-                        label: "Throttle Count",
-                        description: "Consecutive throttling before Low Power Mode toggles on.",
-                        value: Binding(
-                            get: { Double(config.triggerCount) },
-                            set: { config.triggerCount = Int($0) }
-                        ),
-                        range: 1...10,
-                        step: 1,
-                        format: { "\(Int($0))" }
-                    )
+                    if advancedExpanded {
+                        VStack(spacing: 16) {
+                            row(
+                                label: "Ignore CPU Usage Below",
+                                description: "Skip throttle detection if CPU usage is below this value.",
+                                value: Binding(
+                                    get: { Double(100 - config.idleThreshold) },
+                                    set: { config.idleThreshold = 100 - Int($0) }
+                                ),
+                                range: 5...20,
+                                step: 5,
+                                format: { "\(Int($0))%" }
+                            )
+                            row(
+                                label: "Detect CPU Usage Above",
+                                description: "Detect throttling when CPU usage is above value.",
+                                value: Binding(
+                                    get: { Double(100 - config.loadThreshold) },
+                                    set: { config.loadThreshold = 100 - Int($0) }
+                                ),
+                                range: 30...80,
+                                step: 5,
+                                format: { "\(Int($0))%" }
+                            )
+                            row(
+                                label: "Throttle Count",
+                                description: "Consecutive throttling before Low Power Mode toggles on.",
+                                value: Binding(
+                                    get: { Double(config.triggerCount) },
+                                    set: { config.triggerCount = Int($0) }
+                                ),
+                                range: 1...10,
+                                step: 1,
+                                format: { "\(Int($0))" }
+                            )
+                        }
+                        .padding(.top, 16)
+                    }
                 }
-                .padding(.top, 8)
             }
 
             HStack {
