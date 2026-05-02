@@ -45,4 +45,5 @@ https://github.com/shadowed1/Autothrottle/releases
 
 # Changelog:
 
-- April 28th, 2026, 0.1: `Initial Release.`
+- April 28th, 2026 - 0.1: `Initial Release.`
+- May 1st, 2026 - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.`
