@@ -11,7 +11,7 @@
 - Autothrottle toggles Low Power Mode without brightness change to maintain user-defined temp limit.
 - Customize clockspeed limit, cooldown duration, CPU usage threshold, and more.
 
-# Current Release:
+### Current Release:
 https://github.com/shadowed1/Autothrottle/releases
 
 <br><br>
@@ -26,14 +26,14 @@ https://github.com/shadowed1/Autothrottle/releases
 
 <br><br>
 
-# How to use it?
+## How to use it?
 
 - When opening the Autothrottle app, it will appear as a CPU icon in MacOS' Menu Bar.
 - Click the CPU icon in the Menu Bar and click Autothrottle's Stopped/Running button to start/stop. 
 - Open Autothrottle's settings to customize thermal limits.
 - Inside settings remove Autothrottle clicking Uninstall; click About to check for updates!
 
-# How does it work?
+## How does it work?
 
 - Autothrottle uses Apple's powermetric tool to monitor CPU clockspeed and CPU usage.
 - Heuristical algorithm used to detect when MacOS micro-throttles CPU when hot.
@@ -43,7 +43,7 @@ https://github.com/shadowed1/Autothrottle/releases
 - Autothrottle locks and unlocks saved display brightness value right before and after Low Power Mode toggling.
 - Uses `pmset` to control Low Power Mode.
 
-# Changelog:
+### Changelog:
 
 - Apr 28th, 2026 - 0.1: `Initial Release.` <br>
 - May 1st, 2026 - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.` <br>
@@ -51,6 +51,6 @@ https://github.com/shadowed1/Autothrottle/releases
 - May 2nd, 2026 - 0.13: `Fixed mismatched menu bar slider size.` <br>
 
 
-# Acknowledgments:
+### Acknowledgments:
 
 *[skylar](https://github.com/skylartaylor)* - Thanks for valuable advice on helping me with UI. 
