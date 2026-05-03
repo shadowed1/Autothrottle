@@ -53,4 +53,4 @@ https://github.com/shadowed1/Autothrottle/releases
 
 # Acknowledgments:
 
-*skylar* - Thanks for valuable advice on helping me with app. 
+*[skylar](https://github.com/skylartaylor)* - Thanks for valuable advice on helping me with UI. 
