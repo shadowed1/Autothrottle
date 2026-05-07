@@ -52,12 +52,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppState.shared.startAction = { [weak self] in self?.start() }
         AppState.shared.stopAction  = { [weak self] in self?.stop() }
-
         rewireSystemMenuItems()
 
         if !ConfigManager.shared.isSudoersInstalled {
             showInstaller()
         }
+        func start() { }
+
+        func stop() { }
     }
 
     private var didRewireMenus = false

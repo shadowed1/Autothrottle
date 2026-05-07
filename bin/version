@@ -1,4 +1,4 @@
-VERSION=0.13
+VERSION=0.14
 CHANGELOG
-- Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.
+- Icon styling: Default, dark, clear, and tint support added.
 END
