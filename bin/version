@@ -1,4 +1,4 @@
 VERSION=0.14
 CHANGELOG
-- Icon styling: Default, dark, clear, and tint support added.
+- Added default, dark, clear, and tinted icon styling.
 END
