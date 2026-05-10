@@ -4,7 +4,7 @@ import Foundation
 // Created by shadowed1
 
 struct Config: Equatable {
-    var threshold: Double = 0.958
+    var threshold: Double = 0.9493
     var cooldown: Int = 120
     var idleThreshold: Int = 90
     var loadThreshold: Int = 50
