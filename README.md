@@ -46,10 +46,11 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.14/Autothrottle.dm
 ### Changelog:
 
 - Apr 28th, 2026 - 0.1: `Initial Release.` <br>
-- May 1st, 2026 - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.` <br>
-- May 2nd, 2026 - 0.12: `Added dropdown menu to advanced section. Improved dropdown menus.` <br>
-- May 2nd, 2026 - 0.13: `Fixed mismatched menu bar slider size.` <br>
-- May 7th, 2026 - 0.14: `Added default, dark, clear, and tinted icon styling.` <br>
+- May 1st, 2026  - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.` <br>
+- May 2nd, 2026  - 0.12: `Added dropdown menu to advanced section. Improved dropdown menus.` <br>
+- May 2nd, 2026  - 0.13: `Fixed mismatched menu bar slider size.` <br>
+- May 7th, 2026  - 0.14: `Added default, dark, clear, and tinted icon styling.` <br>
+- May 10th, 2026 - 0.15: `Fixed peak clockspeed error. Improved uninstaller to remove leftover files.`
 
 ### Acknowledgments:
 
