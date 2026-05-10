@@ -130,8 +130,8 @@ trap reload_config SIGHUP
 echo
 echo "Detecting peak P-core frequency..."
 PEAK=$(sudo powermetrics --samplers cpu_power -n 1 2>/dev/null \
-    | grep "P-Cluster HW active residency" \
-    | grep -o '[0-9]\+ MHz' \
+    | grep "P-Cluster HW active frequency" \
+    | grep -oE '[0-9]+ *MHz' \
     | awk '{print $1}' \
     | sort -n \
     | tail -1)
