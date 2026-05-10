@@ -58,7 +58,8 @@ read_brightness_now() {
 start_brightness_hold() {
     local target="$1"
     "$BRIGHTNESS" "$target"
-    # double apply trick
+    # triple apply trick
+    "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" --hold "$target" &
     HOLD_PID=$!

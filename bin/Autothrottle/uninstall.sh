@@ -1,3 +1,4 @@
 #!/bin/bash
-set -e
-rm -f /etc/sudoers.d/autothrottle
+sudo rm -f /etc/sudoers.d/autothrottle
+rm -rf ~/Library/Application\ Support/Autothrottle
+sudo rm -rf /tmp/auothrottle* 2>/dev/null
