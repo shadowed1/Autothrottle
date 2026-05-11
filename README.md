@@ -54,4 +54,5 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.14/Autothrottle.dm
 
 ### Acknowledgments:
 
-*[skylar](https://github.com/skylartaylor)* - Thanks for valuable advice on helping me with UI.
+*[Seoclaid](https://github.com/seoclaid)* - Thanks for helping with icon and UI. <br>
+*[skylar](https://github.com/skylartaylor)* - Thanks for valuable advice on helping me with UI. <br>
