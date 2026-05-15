@@ -127,9 +127,10 @@ reload_config() {
     echo "New threshold: ${LIMIT} MHz | Cooldown: ${COOLDOWN}s | Trigger: ${TRIGGER_COUNT}"
 }
 trap reload_config SIGHUP
-
 echo
 echo "Detecting peak P-core frequency..."
+sudo pmset -a lowpowermode 0
+sleep 2
 PEAK=$(sudo powermetrics --samplers cpu_power -n 1 2>/dev/null \
     | grep "P-Cluster HW active frequency" \
     | grep -oE '[0-9]+ *MHz' \
