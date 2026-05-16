@@ -1,4 +1,4 @@
-VERSION=0.15
+VERSION=0.16
 CHANGELOG
-- Fixed peak clockspeed error. Improved uninstaller to remove leftover files.
+- Fixed clockspeed error when CPU is already really hot prior to fresh install.
 END
