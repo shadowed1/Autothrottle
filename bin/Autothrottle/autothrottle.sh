@@ -132,11 +132,11 @@ echo "Detecting peak P-core frequency..."
 sudo pmset -a lowpowermode 0
 sleep 2
 PEAK=$(sudo powermetrics --samplers cpu_power -n 1 2>/dev/null \
-    | grep "P-Cluster HW active frequency" \
-    | grep -oE '[0-9]+ *MHz' \
+    | grep "P-Cluster HW active residency" \
+    | grep -oE '[0-9]+ MHz' \
     | awk '{print $1}' \
-    | sort -n \
-    | tail -1)
+    | sort -rn \
+    | head -1)
 
 if [[ -z "$PEAK" ]]; then
     echo "Failed to detect peak frequency, falling back to 3.2 GHz."
