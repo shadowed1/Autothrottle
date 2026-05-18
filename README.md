@@ -52,7 +52,7 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.14/Autothrottle.dm
 - May 7th, 2026  - 0.14: `Added default, dark, clear, and tinted icon styling.` <br>
 - May 10th, 2026 - 0.15: `Fixed peak clockspeed error. Improved uninstaller to remove leftover files.` <br>
 - May 15th, 2026 - 0.16: `Fixed clockspeed error when CPU is already really hot prior to fresh install.` <br>
-- May 18th, 2026 - 0.17: `Updated to be compatible with Taho 26.5's security changes. Added dynamic clockspeed update support. <br>
+- May 18th, 2026 - 0.17: `Updated to be compatible with Taho 26.5's security changes. Added dynamic clockspeed update support.` <br>
 
 ### Acknowledgments:
 
