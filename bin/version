@@ -1,4 +1,4 @@
 VERSION=0.17
 CHANGELOG
-- Updated to be compatible with Taho 26.5's security changes. Added dynamic clockspeed update support.
+- Updated to be compatible with Tahoe 26.5's security changes. Added dynamic clockspeed update support.
 END
