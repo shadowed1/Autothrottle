@@ -156,10 +156,16 @@ struct InstallerView: View {
             return false
         }
 
+        let username = NSUserName()
+        let appSupport = FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/Application Support/Autothrottle").path
+
         let cmd = """
         cp "\(tmpURL.path)" "\(dest)" && \
         chmod 440 "\(dest)" && \
-        chown root:wheel "\(dest)"
+        chown root:wheel "\(dest)" && \
+        mkdir -p "\(appSupport)" && \
+        chown -R \(username) "\(appSupport)"
         """
 
         let safeCmd = cmd.replacingOccurrences(of: "\"", with: "\\\"")

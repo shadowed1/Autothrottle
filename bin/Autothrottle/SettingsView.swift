@@ -8,7 +8,6 @@ struct SettingsView: View {
     @State private var config: Config = ConfigManager.shared.load()
     @State private var saved = false
     @State private var saveTask: DispatchWorkItem? = nil
-    @State private var peakMHz: Int = 3200
     @State private var showUninstallConfirm = false
     @State private var isUninstalling = false
     @State private var uninstallError: String? = nil
@@ -16,6 +15,8 @@ struct SettingsView: View {
     @State private var advancedExpanded = false
     @State private var advancedChevronAngle: Double = 0
     @StateObject private var appState = AppState.shared
+    @State private var peakTimer: Timer?
+    @State private var peakMHz: Int = ConfigManager.shared.loadPeakMHz()
 
 
     var body: some View {
@@ -182,8 +183,14 @@ struct SettingsView: View {
         }
         .padding(28)
         .frame(width: 520)
-        .onAppear { loadPeak() }
-        .onDisappear { flushPendingSave() }
+        .onAppear {
+            peakTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in loadPeak() }
+        }
+        .onDisappear {
+            peakTimer?.invalidate()
+            flushPendingSave()
+        }
+
         .onChange(of: config) {
             scheduleSave()
         }

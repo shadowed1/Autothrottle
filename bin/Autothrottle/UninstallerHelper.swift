@@ -51,11 +51,15 @@ struct UninstallHelper {
             ofItemAtPath: url.path
         )
 
-        let escaped = url.path
+        let appSupportDir = (FileManager.default
+            .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .first?.appendingPathComponent("Autothrottle").path ?? "")
+            .replacingOccurrences(of: "'", with: "'\\''")
+        let escapedScript = url.path
             .replacingOccurrences(of: "\\", with: "\\\\")
             .replacingOccurrences(of: "\"", with: "\\\"")
 
-        let source = #"do shell script "\#(escaped)" with administrator privileges"#
+        let source = #"do shell script "\#(escapedScript) && rm -rf '\#(appSupportDir)'" with administrator privileges"#
         var appleScriptError: NSDictionary?
         NSAppleScript(source: source)?.executeAndReturnError(&appleScriptError)
 

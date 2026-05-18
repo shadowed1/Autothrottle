@@ -4,7 +4,7 @@ import Foundation
 // Created by shadowed1
 
 struct Config: Equatable {
-    var threshold: Double = 0.949
+    var threshold: Double = 0.958
     var cooldown: Int = 120
     var idleThreshold: Int = 90
     var loadThreshold: Int = 50
@@ -69,13 +69,16 @@ class ConfigManager {
     func save(_ config: Config) {
         do {
             try FileManager.default.createDirectory(at: configDir, withIntermediateDirectories: true)
-
+            
+            let peak = loadPeakMHz()
             let text = """
+            
             THRESHOLD=\(config.threshold)
             COOLDOWN=\(config.cooldown)
             IDLE_THRESHOLD=\(config.idleThreshold)
             LOAD_THRESHOLD=\(config.loadThreshold)
             TRIGGER_COUNT=\(config.triggerCount)
+            PEAK_MHZ=\(peak)
             """
 
             try text.write(to: configFile, atomically: true, encoding: .utf8)
@@ -84,6 +87,17 @@ class ConfigManager {
         } catch {
             print("Failed to save config:", error)
         }
+    }
+    
+    func loadPeakMHz() -> Int {
+        guard let text = try? String(contentsOf: configFile, encoding: .utf8) else { return 3200 }
+        for line in text.split(separator: "\n") {
+            let parts = line.split(separator: "=", maxSplits: 1)
+                .map { $0.trimmingCharacters(in: .whitespaces) }
+            if parts.count == 2, parts[0] == "PEAK_MHZ",
+               let val = Int(parts[1]), val > 0 { return val }
+        }
+        return 3200
     }
 
     var isSudoersInstalled: Bool {

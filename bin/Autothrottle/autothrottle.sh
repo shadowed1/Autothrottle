@@ -149,6 +149,13 @@ echo "Throttle threshold: ${LIMIT} MHz"
 echo
 echo "$PEAK" > /tmp/autothrottle_peak
 
+mkdir -p "$(dirname "$CONFIG")"
+if grep -q "^PEAK_MHZ=" "$CONFIG" 2>/dev/null; then
+    sed -i '' "s/^PEAK_MHZ=.*/PEAK_MHZ=$PEAK/" "$CONFIG"
+else
+    echo "PEAK_MHZ=$PEAK" >> "$CONFIG"
+fi
+
 sudo powermetrics --samplers cpu_power -i 5000 > "$PIPEFILE" 2>/dev/null &
 METRICS_PID=$!
 echo "powermetrics running (PID $METRICS_PID)"
@@ -250,3 +257,4 @@ while true; do
         while IFS= read -r -t 1 line <&3; do :; done
     fi
 done
+	
