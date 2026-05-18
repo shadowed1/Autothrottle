@@ -1,4 +1,4 @@
-VERSION=0.16
+VERSION=0.17
 CHANGELOG
-- Fixed clockspeed error when CPU is already really hot prior to fresh install.
+- Updated to be compatible with Taho 26.5's security changes. Added dynamic clockspeed update support.
 END
