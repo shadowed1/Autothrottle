@@ -48,18 +48,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var scriptProcess: Process?
     var installerWindowController: InstallerWindowController?
-    
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppState.shared.startAction = { [weak self] in self?.start() }
         AppState.shared.stopAction  = { [weak self] in self?.stop() }
         rewireSystemMenuItems()
 
-        if !ConfigManager.shared.isSudoersInstalled {
+        if ConfigManager.shared.isSudoersInstalled {
+            start()
+        } else {
             showInstaller()
         }
-        func start() { }
-
-        func stop() { }
     }
 
     private var didRewireMenus = false
@@ -96,6 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DispatchQueue.main.async {
                 self.installerWindowController?.close()
                 self.installerWindowController = nil
+                self.start()
             }
         }
         wc.show()
@@ -106,6 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppState.shared.pulseMenuBarIcon()
         return true
     }
+
     @objc func start() {
         guard scriptProcess == nil else { return }
 
@@ -145,12 +146,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             try process.run()
             scriptProcess = process
             AppState.shared.isRunning = true
+            AppState.shared.menuBarFilled = true
             print("autothrottle script started (PID \(process.processIdentifier))")
         } catch {
             print("Failed to start autothrottle:", error)
         }
-        AppState.shared.isRunning = true
-        AppState.shared.menuBarFilled = true
     }
 
     @objc func stop() {
@@ -158,9 +158,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         kill(process.processIdentifier, SIGTERM)
         scriptProcess = nil
         AppState.shared.isRunning = false
-        print("SIGTERM sent to autothrottle script")
-        AppState.shared.isRunning = false
         AppState.shared.menuBarFilled = false
+        print("SIGTERM sent to autothrottle script")
     }
 
     @objc func showAboutWindow(_ sender: Any?) {
