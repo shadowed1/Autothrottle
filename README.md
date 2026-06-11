@@ -45,14 +45,16 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.17/Autothrottle.dm
 
 ### Changelog:
 
-- Apr 28th, 2026 - 0.1: `Initial Release.` <br>
-- May 1st, 2026  - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.` <br>
-- May 2nd, 2026  - 0.12: `Added dropdown menu to advanced section. Improved dropdown menus.` <br>
-- May 2nd, 2026  - 0.13: `Fixed mismatched menu bar slider size.` <br>
-- May 7th, 2026  - 0.14: `Added default, dark, clear, and tinted icon styling.` <br>
-- May 10th, 2026 - 0.15: `Fixed peak clockspeed error. Improved uninstaller to remove leftover files.` <br>
-- May 15th, 2026 - 0.16: `Fixed clockspeed error when CPU is already really hot prior to fresh install.` <br>
-- May 18th, 2026 - 0.17: `Updated to be compatible with Tahoe 26.5's security changes. Added dynamic clockspeed update support.` <br>
+- Apr 28th, 2026  - 0.1: `Initial Release.` <br>
+- May 1st, 2026   - 0.11: `Relaxed default CPU limits slightly. Fixed rare brightness flicker issue.` <br>
+- May 2nd, 2026   - 0.12: `Added dropdown menu to advanced section. Improved dropdown menus.` <br>
+- May 2nd, 2026   - 0.13: `Fixed mismatched menu bar slider size.` <br>
+- May 7th, 2026   - 0.14: `Added default, dark, clear, and tinted icon styling.` <br>
+- May 10th, 2026  - 0.15: `Fixed peak clockspeed error. Improved uninstaller to remove leftover files.` <br>
+- May 15th, 2026  - 0.16: `Fixed clockspeed error when CPU is already really hot prior to fresh install.` <br>
+- May 18th, 2026  - 0.17: `Updated to be compatible with Tahoe 26.5's security changes. Added dynamic clockspeed update support.` <br>
+- June 11th, 2026 - 0.18: `No longer requires user to engage Autothrottle once opening app.` <br>
+
 
 ### Acknowledgments:
 
