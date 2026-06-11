@@ -1,4 +1,4 @@
-VERSION=0.17
+VERSION=0.18
 CHANGELOG
-- Updated to be compatible with Tahoe 26.5's security changes. Added dynamic clockspeed update support.
+- No longer requires user to engage Autothrottle once opening app. 
 END
