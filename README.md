@@ -54,6 +54,7 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.17/Autothrottle.dm
 - May 15th, 2026  - 0.16: `Fixed clockspeed error when CPU is already really hot prior to fresh install.` <br>
 - May 18th, 2026  - 0.17: `Updated to be compatible with Tahoe 26.5's security changes. Added dynamic clockspeed update support.` <br>
 - June 11th, 2026 - 0.18: `No longer requires user to engage Autothrottle once opening app.` <br>
+- June 11th, 2026 - 0.19: `Added quick settings to menu bar. Added tiny delay prior to toggling Low Power Mode.` <br>
 
 
 ### Acknowledgments:
