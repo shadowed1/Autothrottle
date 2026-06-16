@@ -12,7 +12,7 @@
 - Customize clockspeed limit, cooldown duration, CPU usage threshold, and more.
 
 ### Current Release:
-https://github.com/shadowed1/Autothrottle/releases/download/0.17/Autothrottle.dmg
+https://github.com/shadowed1/Autothrottle/releases/download/0.20/Autothrottle.dmg
 
 <br><br>
 
