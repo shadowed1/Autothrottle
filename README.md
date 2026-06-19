@@ -56,6 +56,7 @@ https://github.com/shadowed1/Autothrottle/releases/download/0.20/Autothrottle.dm
 - June 11th, 2026 - 0.18: `No longer requires user to engage Autothrottle once opening app.` <br>
 - June 11th, 2026 - 0.19: `Added quick settings to menu bar. Added tiny delay prior to toggling Low Power Mode.` <br>
 - June 15th, 2026 - 0.20: `Added login item toggle in settings.` <br>
+- June 19th, 2026 - 0.21: `Increased default speed` <br>
 
 
 ### Acknowledgments:
