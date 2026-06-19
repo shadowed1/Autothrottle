@@ -1,4 +1,4 @@
-VERSION=0.20
+VERSION=0.21
 CHANGELOG
 - Added login item toggle in settings.
 END
