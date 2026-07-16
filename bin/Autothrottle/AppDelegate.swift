@@ -18,13 +18,11 @@ final class InstallerWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-
         window.title = "Autothrottle Setup"
 
         let hc = NSHostingController(rootView: InstallerView(onComplete: onComplete))
         hc.sizingOptions = []
         window.contentViewController = hc
-
         window.center()
 
         self.init(window: window)
@@ -50,8 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var installerWindowController: InstallerWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Wire closures first — before any call to start() or stop().
         AppState.shared.startAction = { [weak self] in self?.start() }
         AppState.shared.stopAction  = { [weak self] in self?.stop() }
+
         rewireSystemMenuItems()
 
         if ConfigManager.shared.isSudoersInstalled {
@@ -138,6 +138,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DispatchQueue.main.async {
                 self?.scriptProcess = nil
                 AppState.shared.isRunning = false
+                AppState.shared.menuBarFilled = false
                 print("autothrottle script terminated")
             }
         }

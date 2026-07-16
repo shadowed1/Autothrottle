@@ -5,7 +5,10 @@ import Combine
 // Created by shadowed1
 
 final class AppState: ObservableObject {
-    static let shared = AppState()
+
+    static let shared: AppState = {
+        AppState()
+    }()
 
     @Published var isRunning: Bool = false
     @Published var menuBarFilled: Bool = false

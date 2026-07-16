@@ -9,11 +9,11 @@ fi
 PID_FILE="/tmp/autothrottle.pid"
 echo $$ > "$PID_FILE"
 
-THRESHOLD="${THRESHOLD:-0.949}"
+THRESHOLD="${THRESHOLD:-0.9}"
 COOLDOWN="${COOLDOWN:-120}"
 IDLE_THRESHOLD="${IDLE_THRESHOLD:-90}"
-LOAD_THRESHOLD="${LOAD_THRESHOLD:-50}"
-TRIGGER_COUNT="${TRIGGER_COUNT:-3}"
+LOAD_THRESHOLD="${LOAD_THRESHOLD:-40}"
+TRIGGER_COUNT="${TRIGGER_COUNT:-5}"
 
 APP_PATH="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 BRIGHTNESS="$APP_PATH/autothrottle_brightness"
@@ -34,13 +34,13 @@ HOLD_PID=""
 SAVED_BRIGHT=""
 
 freeze_brightness_updates() {
-    date +%s > "$BRIGHT_FREEZE_UNTIL"
+    date +%s%3N > "$BRIGHT_FREEZE_UNTIL"
 }
 
 is_brightness_frozen() {
     [[ -f "$BRIGHT_FREEZE_UNTIL" ]] || return 1
     local now freeze_until
-    now=$(date +%s)
+    now=$(date +%s%3N)
     freeze_until=$(cat "$BRIGHT_FREEZE_UNTIL")
     (( now - freeze_until < 3 ))
 }
@@ -59,6 +59,7 @@ start_brightness_hold() {
     local target="$1"
     "$BRIGHTNESS" "$target"
     # triple apply trick
+    "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" "$target"
     "$BRIGHTNESS" --hold "$target" &
@@ -210,16 +211,15 @@ while true; do
 
         SAVED_BRIGHT=$(get_user_brightness)
         echo "Saving brightness: $SAVED_BRIGHT"
-
         "$BRIGHTNESS" "$SAVED_BRIGHT"
         "$BRIGHTNESS" "$SAVED_BRIGHT"
         "$BRIGHTNESS" --hold "$SAVED_BRIGHT" &
         HOLD_PID=$!
         freeze_brightness_updates
-        sleep 0.5
+        sleep 5
 
         sudo pmset -a lowpowermode 1
-        sleep 3
+        sleep 5
 
         stop_brightness_hold "$SAVED_BRIGHT"
         rm -f "$BRIGHT_FREEZE_UNTIL"
@@ -234,22 +234,18 @@ while true; do
 
         SAVED_BRIGHT=$(get_user_brightness)
         echo "Restoring brightness: $SAVED_BRIGHT"
-
         "$BRIGHTNESS" "$SAVED_BRIGHT"
         "$BRIGHTNESS" "$SAVED_BRIGHT"
         "$BRIGHTNESS" --hold "$SAVED_BRIGHT" &
         HOLD_PID=$!
         freeze_brightness_updates
-        sleep 0.5
+        sleep 5
 
         sudo pmset -a lowpowermode 0
-        sleep 3.0
+        sleep 5
 
         stop_brightness_hold "$SAVED_BRIGHT"
         rm -f "$BRIGHT_FREEZE_UNTIL"
-
-        LOW_POWER=0
-        SAVED_BRIGHT=""
 
         LOW_POWER=0
         SAVED_BRIGHT=""
